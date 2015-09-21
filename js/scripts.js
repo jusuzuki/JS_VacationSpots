@@ -10,7 +10,7 @@ var geocoder;
    map = new google.maps.Map(document.getElementById("map"), mapOptions);
  }
 
- function codeAddress() {
+function codeAddress() {
    var address = $("input#new-location-name").val();
    geocoder.geocode( { 'address': address}, function(results, status) {
      if (status == google.maps.GeocoderStatus.OK) {
@@ -30,6 +30,7 @@ var geocoder;
 
        marker.addListener('click', function() {
          infowindow.open(map, marker);
+         $("#show-location").show();
        });
      } else {
        alert("Geocode was not successful for the following reason: " + status);
