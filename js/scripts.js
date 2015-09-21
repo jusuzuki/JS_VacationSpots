@@ -15,9 +15,20 @@ var geocoder;
    geocoder.geocode( { 'address': address}, function(results, status) {
      if (status == google.maps.GeocoderStatus.OK) {
        map.setCenter(results[0].geometry.location);
+       var contentString = address;
+
+       var infowindow = new google.maps.InfoWindow({
+         content: contentString
+       });
+
        var marker = new google.maps.Marker({
            map: map,
+           Title: '' + address,
            position: results[0].geometry.location
+       });
+
+       marker.addListener('click', function() {
+         infowindow.open(map, marker);
        });
      } else {
        alert("Geocode was not successful for the following reason: " + status);
