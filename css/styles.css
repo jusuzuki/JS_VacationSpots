@@ -1,12 +1,12 @@
-#show-contact {
+#show-location {
   display: none;
 }
 
-.contact {
+.vacation {
   cursor: pointer;
   color: #0088cc;
 }
 
-.contact:hover {
+.vacation:hover {
   text-decoration: underline;
 }

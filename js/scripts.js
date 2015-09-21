@@ -1,59 +1,51 @@
 $(document).ready(function() {
-  $("#add-address").click(function() {
-    $("#new-addresses").append('<div class="new-address">' +
+  $("#add-landmark").click(function() {
+    $("#new-landmarks").append('<div class="new-landmark">' +
                                  '<div class="form-group">' +
-                                   '<label for="new-street">Street</label>' +
-                                   '<input type="text" class="form-control new-street">' +
-                                 '</div>' +
-                                 '<div class="form-group">' +
-                                   '<label for="new-city">City</label>' +
-                                   '<input type="text" class="form-control new-city">' +
-                                 '</div>' +
-                                 '<div class="form-group">' +
-                                   '<label for="new-state">State</label>' +
-                                   '<input type="text" class="form-control new-state">' +
-                                 '</div>' +
-                               '</div>');
+                                   '<label for="new-nameOf">Landmark:</label>' +
+                                   '<input type="text" class="form-control new-nameOf">' +
+                                 '</div>');
   });
-  debugger;
-  $("form#new-contact").submit(function(event) {
+
+  $("form#new-spot").submit(function(event) {
       event.preventDefault();
 
-      var inputtedFirstName = $("input#new-first-name").val();
-      var inputtedLastName = $("input#new-last-name").val();
+      var inputtedCountryName = $("input#new-country-name").val();
+      var inputtedLocationName = $("input#new-location-name").val();
+      var inputtedDate = $("input#new-time").val();
+      var inputtedNote = $("input#new-note").val();
 
-      var newContact = { firstName: inputtedFirstName, lastName: inputtedLastName, addresses: [] };
+      var newSpot = { countryName: inputtedCountryName, locationName: inputtedLocationName, date: inputtedDate, notes: inputtedNote, landmarks: [] };
+debugger;
+      $(".new-landmark").each(function() {
+        var inputtedLandmark = $(this).find("input.new-nameOf").val();
+        var newLandmark = { nameOf: inputtedLandmark };
 
-      $(".new-address").each(function() {
-        var inputtedStreet = $(this).find("input.new-street").val();
-        var inputtedCity = $(this).find("input.new-city").val();
-        var inputtedState = $(this).find("input.new-state").val();
-
-        var newAddress = { street: inputtedStreet, city: inputtedCity, state: inputtedState };
-        newContact.addresses.push(newAddress);
+        newSpot.landmarks.push(newLandmark);
       });
 
 
-      $("ul#contacts").append("<li><span class='contact'>" + newContact.firstName + "</span></li>");
+      $("ul#vacation-spots").append("<li><span class='vacation'>" + newSpot.countryName + "</span></li>");
 
-     $(".contact").last().click(function() {
-       $("#show-contact").show();
+     $(".vacation").last().click(function() {
+       $("#show-location").show();
 
-       $("#show-contact h2").text(newContact.firstName);
-       $(".first-name").text(newContact.firstName);
-       $(".last-name").text(newContact.lastName);
+       $("#show-location h2").text(newSpot.countryName);
+       $(".country").text(newSpot.countryName);
+       $(".time").text(newSpot.date);
+       $(".notes").text(newSpot.notes);
 
-       $("ul#addresses").text("");
-       newContact.addresses.forEach(function(address) {
-         $("ul#addresses").append("<li>" + address.street + ", " + address.city + ", " + address.state + "</li>");
+       $("ul#landmark").text("");
+       newSpot.landmarks.forEach(function(landmark) {
+         $("ul#landmark").append("<li>" + landmark.nameOf + "</li>");
        });
      });
 
-     $("input#new-first-name").val("");
-     $("input#new-last-name").val("");
-     $("input.new-street").val("");
-     $("input.new-city").val("");
-     $("input.new-state").val("");
+     $("input#new-country-name").val("");
+     $("input#new-location-name").val("");
+     $("input#new-time").val("");
+     $("input#new-note").val("");
+     $("input.new-nameOf").val("");
    });
 
  });
