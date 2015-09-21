@@ -10,12 +10,14 @@
     <title>Vacation spots</title>
   </head>
   <body onload="initialize()">
-    <div id="map" style="width:480px; height:420px"></div>
     <div class="container">
       <h1>Vacation Spots</h1>
 
+      <div id="map" style="height:300px"></div>
+
+      <div class="add-spot-form">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-sm-6">
           <h2>Add a spot:</h2>
           <form id="new-spot">
             <div class="form-group">
@@ -44,10 +46,7 @@
                   <label for="new-nameOf">Landmark:</label>
                   <input type="text" class="form-control new-nameOf">
                 </div>
-
               </div>
-        <!--possibly add pictures here-->
-            </div>
             </div>
 
             <span class="btn btn-primary" id="add-landmark">Add another landmark</span>
@@ -55,26 +54,34 @@
             <button type="submit" class="btn" onclick="codeAddress()">Add</button>
           </form>
 
-          <h2>Vacation Spots:</h2>
-          <ul id="vacation-spots">
-
-          </ul>
         </div>
 
-        <div class="col-md-6">
-          <div id="show-location">
-            <h2></h2>
 
-            <p>Country: <span class="country"></span></p>
-            <p>Time of year: <span class="time"></span></p>
-            <p>Notes:<span class="notes"></span></p>
-            <p>Landmarks: <span class="show-landmarks"></span></p>
-            <ul id="landmark">
+        <div class="list-of-places">
+              <div class="col-sm-6">
 
-            </ul>
-          </div>
+              <h2>Vacation Spots:</h2>
+              <ul id="vacation-spots">
+
+              </ul>
+            </div>
+
+            <div class="col-md-6">
+              <div id="show-location">
+                <h2></h2>
+
+                <p>Country: <span class="country"></span></p>
+                <p>Time of year: <span class="time"></span></p>
+                <p>Notes:<span class="notes"></span></p>
+                <p>Landmarks: <span class="show-landmarks"></span></p>
+                <ul id="landmark">
+
+                </ul>
+              </div>
+            </div>
         </div>
       </div>
+
     </div>
 
   </body>

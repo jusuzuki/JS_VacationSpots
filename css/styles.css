@@ -11,4 +11,10 @@
   text-decoration: underline;
 }
 
+#add-spot-form {
+  float: left;
+}
+
+#list-of-places {
+  float: right;
 }
