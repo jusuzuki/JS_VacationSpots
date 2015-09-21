@@ -17,6 +17,7 @@ var geocoder;
        map.setCenter(results[0].geometry.location);
        var contentString = address;
 
+
        var infowindow = new google.maps.InfoWindow({
          content: contentString
        });
