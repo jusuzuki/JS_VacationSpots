@@ -1,3 +1,31 @@
+var geocoder;
+ var map;
+ function initialize() {
+   geocoder = new google.maps.Geocoder();
+   var latlng = new google.maps.LatLng(-34.397, 150.644);
+   var mapOptions = {
+     zoom: 3,
+     center: latlng
+   }
+   map = new google.maps.Map(document.getElementById("map"), mapOptions);
+ }
+
+ function codeAddress() {
+   var address = $("input#new-location-name").val();
+   geocoder.geocode( { 'address': address}, function(results, status) {
+     if (status == google.maps.GeocoderStatus.OK) {
+       map.setCenter(results[0].geometry.location);
+       var marker = new google.maps.Marker({
+           map: map,
+           position: results[0].geometry.location
+       });
+     } else {
+       alert("Geocode was not successful for the following reason: " + status);
+     }
+   });
+ }
+
+
 $(document).ready(function() {
   $("#add-landmark").click(function() {
     $("#new-landmarks").append('<div class="new-landmark">' +
@@ -25,12 +53,12 @@ debugger;
       });
 
 
-      $("ul#vacation-spots").append("<li><span class='vacation'>" + newSpot.countryName + "</span></li>");
+      $("ul#vacation-spots").append("<li><span class='vacation'>" + newSpot.locationName + "</span></li>");
 
      $(".vacation").last().click(function() {
        $("#show-location").show();
-
-       $("#show-location h2").text(newSpot.countryName);
+debugger;
+       $("#show-location h2").text(newSpot.locationName);
        $(".country").text(newSpot.countryName);
        $(".time").text(newSpot.date);
        $(".notes").text(newSpot.notes);
